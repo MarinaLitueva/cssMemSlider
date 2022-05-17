@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2d2d2d;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: .7rem;
+    user-select: none;
+}
+
+.slider-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+}
+
+.slider {
+    width: 60rem;
+    height: auto;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr 1fr;
+}
+
+input {
+    visibility: hidden;
+}
+
+#r-1:checked ~ .slide1,
+#r-2:checked ~ .slide2,
+#r-3:checked ~ .slide3,
+#r-4:checked ~ .slide4,
+#r-5:checked ~ .slide5 {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 2s linear;
+}
+
+/* Checked */
+
+#r-1:checked ~ .navigation > .label1,
+#r-2:checked ~ .navigation > .label2,
+#r-3:checked ~ .navigation > .label3,
+#r-4:checked ~ .navigation > .label4,
+#r-5:checked ~ .navigation > .label5 {
+    background-color: #e1cb50;
+    transition: .2s ease-in-out;
+}
+
+/* Hover */
+
+#r-1 ~ .navigation > .label1:hover,
+#r-2 ~ .navigation > .label2:hover,
+#r-3 ~ .navigation > .label3:hover,
+#r-4 ~ .navigation > .label4:hover,
+#r-5 ~ .navigation > .label5:hover {
+    background: darkseagreen;
+    transition: .2s ease-in-out;
+}
+
+/*Active*/
+
+#r-1:active ~ .navigation > .label1:hover,
+#r-2:active ~ .navigation > .label2:hover,
+#r-3:active ~ .navigation > .label3:hover,
+#r-4:active ~ .navigation > .label4:hover,
+#r-5:active ~ .navigation > .label5:hover {
+    background: #941b1b;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s 1.5s, opacity 1.5s linear;
+}
+
+.slide__desc {
+    width: 60%;
+    font-size: 1.5rem;
+    line-height: 2.9rem;
+    margin-left: .45rem;
+    color: wheat;
+}
+
+.slide {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+}
+
+.slider-1 {
+    background-image: url(/cssMemSlider/images/slide-1.webp);
+}
+
+.slider-2 {
+    background-image: url(/cssMemSlider/images/slide-2.webp);
+}
+
+.slider-3 {
+    background-image: url(/cssMemSlider/images/slide-3.webp);
+}
+
+.slider-4 {
+    background-image: url(/cssMemSlider/images/slide-4.webp);
+}
+
+.slider-5 {
+    background-image: url(/cssMemSlider/images/slide-5.webp);
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin-bottom: .2rem;
+    user-select: none;
+    z-index: 10;
+}
+
+.navigation__item {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: .5rem solid #2d2d2d;
+    background-color: white;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 320px)  and (max-width: 550px) {
+    .navigation {
+        grid-column: 1/ span 3;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .slide__desc {
+        width: 100%;
+        margin-top: calc(18% - 1%);
+        margin-bottom: calc(14.5% - 1%);
+        line-height: 1rem;
+    }
+}
+
